@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../pages/common/underConstruction.dart';
 
 class CustomDrawer extends StatelessWidget {
   final String username;
@@ -105,26 +106,46 @@ class CustomDrawer extends StatelessWidget {
           currentIndex == 3,
         ),
         const Divider(),
-        _buildListTile(
-          context,
-          Icons.notifications,
-          'Notificaciones',
-          4,
-          false,
+
+        // 👉 Pantallas en construcción (sin const)
+        ListTile(
+          leading: const Icon(Icons.notifications),
+          title: const Text('Notificaciones'),
+          onTap: () {
+            Navigator.pop(context); // Cierra el drawer
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => UnderConstructionScreen(title: "Notificaciones"),
+              ),
+            );
+          },
         ),
-        _buildListTile(
-          context,
-          Icons.help,
-          'Ayuda',
-          5,
-          false,
+        ListTile(
+          leading: const Icon(Icons.help),
+          title: const Text('Ayuda'),
+          onTap: () {
+            Navigator.pop(context);
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => UnderConstructionScreen(title: "Ayuda"),
+              ),
+            );
+          },
         ),
-        _buildListTile(
-          context,
-          Icons.info,
-          'Acerca de',
-          6,
-          false,
+        ListTile(
+          leading: const Icon(Icons.info),
+          title: const Text('Acerca de'),
+          onTap: () {
+            Navigator.pop(context);
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => UnderConstructionScreen(title: "Acerca de"),
+              ),
+            );
+          },
         ),
         const Divider(),
         _buildLogoutTile(context),

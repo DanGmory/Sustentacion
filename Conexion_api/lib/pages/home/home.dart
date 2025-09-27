@@ -7,6 +7,7 @@ import '../auth/login.dart';
 import '../config/config.dart';
 import '../pokemons/pokescreen.dart';
 
+
 class HomeScreen extends StatefulWidget {
   final String username;
   final String password;
@@ -46,8 +47,9 @@ class _HomeScreenState extends State<HomeScreen> {
         title: 'Perfil',
         icon: Icons.person,
         page: UserScreen(
-          username: widget.username, 
-          password: widget.password),
+          username: widget.username,
+          password: widget.password,
+        ),
       ),
       _FeaturePage(
         title: 'Configuración',
@@ -62,12 +64,17 @@ class _HomeScreenState extends State<HomeScreen> {
       _FeaturePage(
         title: 'Notificaciones',
         icon: Icons.notifications,
-        page: const Center(child: Text('Pantalla de Notificaciones')),
+        page: Center(),
       ),
       _FeaturePage(
         title: 'Ayuda',
         icon: Icons.help,
-        page: const Center(child: Text('Pantalla de Ayuda')),
+        page: Center(),
+      ),
+      _FeaturePage(
+        title: 'Acerca de...',
+        icon: Icons.info,
+        page: Center()
       ),
     ];
   }
@@ -184,11 +191,12 @@ class HomeContent extends StatelessWidget {
               crossAxisSpacing: 10,
               mainAxisSpacing: 10,
               children: [
-                _buildFeatureCard(context, Icons.pets, 'Pokemons', () => onNavigateTo(1)),
-                _buildFeatureCard(context, Icons.person, 'Perfil', () => onNavigateTo(2)),
-                _buildFeatureCard(context, Icons.settings, 'Configuración', () => onNavigateTo(3)),
+                _buildFeatureCard(context, Icons.person, 'Perfil', () => onNavigateTo(1)),
+                _buildFeatureCard(context, Icons.settings, 'Configuración', () => onNavigateTo(2)),
+                _buildFeatureCard(context, Icons.pets, 'Pokemons', () => onNavigateTo(3)),
                 _buildFeatureCard(context, Icons.notifications, 'Notificaciones', () => onNavigateTo(4)),
                 _buildFeatureCard(context, Icons.help, 'Ayuda', () => onNavigateTo(5)),
+                _buildFeatureCard(context, Icons.info, 'Acerca de...', () => onNavigateTo(6)),
               ],
             ),
           ],
@@ -231,6 +239,7 @@ class HomeContent extends StatelessWidget {
     );
   }
 }
+
 class _FeaturePage {
   final String title;
   final IconData icon;
